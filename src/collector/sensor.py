@@ -48,7 +48,7 @@ class Detector:
         self.quantity = quantity
 
     def __str__(self):
-        "{} {}".format(self.)
+        "{} {}".format(self.name,self.quantity)
 
     @staticmethod
     def from_json(json):
