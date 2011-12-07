@@ -15,6 +15,8 @@ from multiprocessing import Pool
 import multiprocessing
 import logging
 
+import json
+
 json_schema = '''{
   "namespace": "au.edu.unimelb.eresearch.beip",
   "name":"SensorReading",
@@ -27,8 +29,8 @@ json_schema = '''{
 
 SCHEMA = avro.schema.parse(json_schema)
 
-logger = multiprocessing.log_to_stderr()
-logger.setLevel(logging.INFO)
+#logger = multiprocessing.log_to_stderr()
+#logger.setLevel(logging.INFO)
 
 def sysfs_read(path):
     
@@ -55,9 +57,11 @@ def sysfs_read(path):
         writer.close()
         target.close()
 
+
+
 if __name__ == '__main__':
     # Only grab inputs
-    targets = glob.glob('/sys/class/hwmon/hwmon0/device/*_input')
+
     try:
         pool = Pool(len(targets))
         pool.map(sysfs_read,targets)
