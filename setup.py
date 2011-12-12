@@ -13,6 +13,7 @@ setup(name='beip_collector',
 #      url='',
       packages=find_packages('src',exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
       package_dir = {'':'src'},
+      requires=["avro","beip_location"],
       test_suite = 'nose.collector',
       tests_require = ["nose"] )
 
