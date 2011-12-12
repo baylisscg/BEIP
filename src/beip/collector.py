@@ -59,25 +59,4 @@ def sysfs_read(path):
 
 
 
-if __name__ == '__main__':
-    # Only grab inputs
-
-    try:
-        pool = Pool(len(targets))
-        pool.map(sysfs_read,targets)
-        pool.close()
-        print 'pool map complete'
-    except KeyboardInterrupt:
-        print 'got ^C while pool mapping, terminating the pool'
-        pool.terminate()
-        print 'pool is terminated'
-    except Exception, e:
-        print 'got exception: %r, terminating the pool' % (e,)
-        pppl.terminate()
-        print 'pool is terminated'
-    finally:
-        print 'joining pool processes'
-        pool.join()
-        print 'join complete'
-    print 'the end'
     
